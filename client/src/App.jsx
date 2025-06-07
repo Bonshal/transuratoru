@@ -6,7 +6,7 @@ import { use } from 'react';
 
 function App() {
   const [image,setImage] = useState(null);
-  const [japanese,setJapansese] = useState("");
+  const [japanese,setJapanese] = useState("");
   const [english, setEnglish] = useState('')
   const [loading, setLoading] = useState(false);
 
@@ -27,19 +27,19 @@ function App() {
       const errorData = await response.json();
       console.error("Error from backend:", errorData);
       // Optionally, set an error state to display to the user
-      setJapansese("Error processing image.");
+      setJapanese("Error processing image.");
       setEnglish("Please try again.");
       setLoading(false);
       return;
     }
 
     const data = await response.json();
-    setJapansese(data.japanese)
+    setJapanese(data.japanese)
     setEnglish(data.english)
   }catch(err)
   {
     console.log("failed to fetch",err)
-    setJapansese("Network error or serer is down")
+    setJapanese("Network error or serer is down")
     setEnglish("Please check your connection and try again")
   }finally{
     setLoading(false);
